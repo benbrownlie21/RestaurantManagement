@@ -68,7 +68,8 @@ class RestaurantChoices:
             VALUES (%s, %s, %s)
             """
             cls.db.cursor.execute(query, (cu_choice, wa_choice, items_json))
-            print(f"Order of {item_names} has been created successfully!")
+            item_names_str = ", ".join(f"'{item}'" for item in item_names)
+            print(f"Order of {item_names_str} has been created successfully!")
             break
         menu.restaurant()
 
@@ -178,6 +179,22 @@ class RestaurantChoices:
             order_complete = bool(result[0])
             if order_complete:
                 print(f"Order number '{order_id_input}' has already been paid for")
+                menu.restaurant()
+                return
+        query_c = """
+        SELECT cancelled
+        FROM orders
+        WHERE order_id = %s
+        """
+        cls.db.cursor.execute(query_c, (order_id_input,))
+        result = cls.db.cursor.fetchone()
+
+        if result:
+            cancelled = bool(result[0])
+            if cancelled:
+                print(
+                    f"Order number '{order_id_input}' has been cancelled and cannot be paid for"
+                )
                 menu.restaurant()
                 return
 
