@@ -1,19 +1,10 @@
-import psycopg2
 import menu
 import time
+from db import Database
 
 
 class ManagerChoices:
-    conn = psycopg2.connect(
-        database="RestaurantManagement",
-        user="postgres",
-        password="New2020Road!",
-        host="localhost",
-        port="5433",
-    )
-
-    conn.autocommit = True
-    cursor = conn.cursor()
+    db = Database()
 
     @classmethod
     def reports(cls):
@@ -21,16 +12,16 @@ class ManagerChoices:
         query_search_to = """
         SELECT COUNT(order_id), SUM(total_price) FROM Orders
         """
-        cls.cursor.execute(query_search_to)
-        results = cls.cursor.fetchall()
+        cls.db.cursor.execute(query_search_to)
+        results = cls.db.cursor.fetchall()
         for row in results:
             print(f"Total number of orders: \n{row[0]} with a total of £{row[1]}\n")
 
         query_search_ao = """
         SELECT COUNT(order_id), SUM(total_price) FROM Orders WHERE order_delivered = FALSE
         """
-        cls.cursor.execute(query_search_ao)
-        results = cls.cursor.fetchall()
+        cls.db.cursor.execute(query_search_ao)
+        results = cls.db.cursor.fetchall()
         for row in results:
             print(
                 f"Total number of active orders:\n{row[0]} with a total of £{row[1]}\n"
@@ -39,8 +30,8 @@ class ManagerChoices:
         query_search_co = """
         SELECT COUNT(order_id), SUM(total_price) FROM Orders WHERE cancelled = TRUE
         """
-        cls.cursor.execute(query_search_co)
-        results = cls.cursor.fetchall()
+        cls.db.cursor.execute(query_search_co)
+        results = cls.db.cursor.fetchall()
         for row in results:
             print(
                 f"The total number of cancelled orders is:\n{row[0]} with a total lost value of £{row[1]}\n"
@@ -54,8 +45,8 @@ class ManagerChoices:
         ORDER BY total_orders DESC
         LIMIT 1
         """
-        cls.cursor.execute(query_search_bw)
-        result = cls.cursor.fetchone()
+        cls.db.cursor.execute(query_search_bw)
+        result = cls.db.cursor.fetchone()
         if result:
             full_name, total_orders = result
             print(
@@ -70,8 +61,8 @@ class ManagerChoices:
         ORDER BY total_orders DESC
         LIMIT 1
         """
-        cls.cursor.execute(query_search_bw)
-        result = cls.cursor.fetchone()
+        cls.db.cursor.execute(query_search_bw)
+        result = cls.db.cursor.fetchone()
         if result:
             full_name, total_orders = result
             print(
@@ -83,8 +74,8 @@ class ManagerChoices:
         FROM Orders
         WHERE order_complete = FALSE
         """
-        cls.cursor.execute(query_pm)
-        result = cls.cursor.fetchone()
+        cls.db.cursor.execute(query_pm)
+        result = cls.db.cursor.fetchone()
         if result:
             avg_paid, num_orders = result
         print(
@@ -101,8 +92,7 @@ class ManagerChoices:
         SET active = TRUE
         WHERE waiter_id = '{wa_input}'
         """
-        cls.cursor.execute(query)
-        cls.conn.commit()
+        cls.db.cursor.execute(query)
         print(f"Waiter '{wa_input}' has been activated")
         menu.manager()
 
@@ -114,8 +104,7 @@ class ManagerChoices:
         SET active = FALSE
         WHERE waiter_id = '{wa_input}'
         """
-        cls.cursor.execute(query)
-        cls.conn.commit()
+        cls.db.cursor.execute(query)
         print(f"Waiter {wa_input} has been deactivated")
         menu.manager()
 
@@ -127,10 +116,9 @@ class ManagerChoices:
         SET deleted = CURRENT_TIMESTAMP
         WHERE customer_id = '{cu_input}'
         """
-        cls.cursor.execute(query)
-        cls.conn.commit()
+        cls.db.cursor.execute(query)
         print(f"Customer {cu_input} has been deleted")
         menu.manager()
 
     def close_connection(cls):
-        cls.conn.close()
+        cls.db.close_connection()

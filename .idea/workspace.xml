@@ -5,180 +5,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="062e6acf-8122-43fd-9a8b-2f0edf215061" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/Developers Institute.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 1/Untitled-1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 1/Untitled-2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 1/Untitled-3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/break.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/continue.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/exercise.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/for_loops.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/infinite_loop.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/list_iterating_and_formatting.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/lists.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/lists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/loops.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/multiplication.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/sets.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/tuples.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/using_flag.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 3/while_loop.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 5/Enumerate_function.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 5/data_manipulation_task.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 5/dictionaries.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 5/dictionary.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 5/dictionary_task.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 1/Day 5/range.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 1/Lamda_functions.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 1/function_ex.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 1/function_ex2_1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 1/function_ex2_2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 1/function_ex2_3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 1/functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 1/functions2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/args_and_kwargs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/assertion.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/ex1_map_filter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/exceptions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/exceptions_ex.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/filter_function.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/functtools.reduce_function.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/lambda_ex.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/lambda_function.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/map_function.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/merge_dict_ex.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 3/try_except.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 5 (also in Exercises)/hangman.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Classes/Week 2/Day 5 (also in Exercises)/tic_tac_toe.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Documentation/Developer Institute receipt.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Documentation/KORET Loan Handling Fee - Ben Brownlie.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Documentation/Koret contract English Ben Brownlie - Signed 2.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Documentation/Koret contract English Ben Brownlie - Signed 2.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Documentation/Koret contract English Ben Brownlie - Signed.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Documentation/Koret contract English Ben Brownlie - Signed.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Documentation/Koret contract English.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Documentation/TTA_2023 103 TTA-Student Enrollment Agreement Benjamin Brownlie - TTA14.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Exercises" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/comparison_is_versus_==.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/comparison_is_versus_==2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/conditionals1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/conditionals2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/conditionals3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/conditionals4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/data_types.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/dictionary_basics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/dictionary_iteration_comprehension.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/falsey.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/for_loops.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/for_loops2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/function_parameters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/functions_basics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/gathering_user_input.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/lists1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Pre Course Python/lists2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/.ipynb_checkpoints/cleansing_data-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Excel/Master the Fundamentals of Excel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Excel/P2C2_01_Test_File.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Excel/P2C3_01_Eastern_Europe_File_1100+_lines.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Excel/P2C3_02_Over_to_You.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Excel/P2C4_01_Over_to_You (1).xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Excel/P2C4_01_Over_to_You - Shortcut.lnk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Excel/P2C4_01_Over_to_You.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Excel/P2C4_02_Answer_Key.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Improve Your Data Literacy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Master the Fundamentals of Excel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C2_01_Test_File.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C3_01_Eastern_Europe_File_1100+_lines.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C3_02_Over_to_You.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C4_01_Over_to_You (1).xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C4_01_Over_to_You - Shortcut.lnk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C4_01_Over_to_You.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C4_02_Answer_Key.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C5_00_Table_Post-Adjustments.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C5_01_Cross-Reference_Table.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P2C5_02_Over_to_You.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P3C1_01_Over_to_You.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P3C3_01_Course_File.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P3C3_02_Over_to_You.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P4C3_01_Calculations_Course_File.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P4C4_01_First_Macro.xlsm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P4C4_02_Over_To_You.xlsm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/P4QUIZ.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Perfect your Excel Skills.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Perform an Initial Data Analysis.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/Untitled.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/bivariate_analyses.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/calculate_measures_of_shape.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/cleanse_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/cleanse_data_2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/cleansing_data.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/correlations_between_two_quantitative_variables.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/correlations_between_two_quantitative_variables2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/empirical_distribution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/iris_dataset.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/linear_regression.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/measures_of_central_tendency.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/measures_of_concentration.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/one_quantitative_one_qualitative.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/operations.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/persons.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/persons2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/two_qualitative_variables.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/two_qualitative_variables2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Prep Course/value_spread_in_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/.idea/file.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/congrats.7z" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/congrats.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/exam.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../project/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kitchen_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/kitchen_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/waitlist_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/waitlist_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "benbrownlie21"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;benbrownlie21&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/benbrownlie21/RestaurantManagement.git",
-    "accountId": "5c47c873-e4c6-49c5-a679-e5086affc415"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/benbrownlie21/RestaurantManagement.git&quot;,
+    &quot;accountId&quot;: &quot;5c47c873-e4c6-49c5-a679-e5086affc415&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2h0hoPdYsEaKV1qMIgC5EGFFvd5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.menu.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/bbrow/Desktop/Courses/Developers Institute/Hackathon/RestaurantManagement"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.menu.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/bbrow/Desktop/Courses/Developers Institute/Hackathons/RestaurantManagement&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="menu" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RestaurantManagement" />
@@ -193,6 +83,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/menu.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -211,7 +102,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
+        <option value="bundled-python-sdk-1f1b7bcced7d-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.29188.22" />
       </set>
     </attachedChunks>
   </component>
@@ -223,7 +114,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716737076867</updated>
+      <workItem from="1747922956048" duration="1756000" />
+      <workItem from="1758450901282" duration="3000" />
+      <workItem from="1774008035737" duration="22000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/RestaurantManagement$menu.coverage" NAME="menu Coverage Results" MODIFIED="1747924138771" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

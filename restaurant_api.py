@@ -1,20 +1,10 @@
-import psycopg2
 from tabulate import tabulate
 import json
 import menu
-
+from db import Database
 
 class RestaurantChoices:
-    conn = psycopg2.connect(
-        database="RestaurantManagement",
-        user="postgres",
-        password="New2020Road!",
-        host="localhost",
-        port="5433",
-    )
-
-    conn.autocommit = True
-    cursor = conn.cursor()
+    db = Database()
 
     @classmethod
     def view(cls):
@@ -24,10 +14,10 @@ class RestaurantChoices:
         WHERE available = TRUE
         ORDER BY category DESC
         """
-        cls.cursor.execute(query)
-        results = cls.cursor.fetchall()
+
+        results = cls.db.execute_all(query)
         if results:
-            headers = [desc[0].upper() for desc in cls.cursor.description]
+            headers = [desc[0].upper() for desc in cls.db.cursor.description]
             print(tabulate(results, headers=headers, tablefmt="fancy_grid"))
         menu.restaurant()
 
@@ -37,7 +27,7 @@ class RestaurantChoices:
         wa_choice = input("Enter Waiter ID: ")
         while True:
             fo_choice = input(
-                "What would you like to order today? (comma-separated item names): "
+                "What would you like to order today? (separate by commas): "
             )
 
             # Split the food choice input into individual item names
@@ -49,8 +39,8 @@ class RestaurantChoices:
                 query = """
                 SELECT item_id, category, price FROM Menu WHERE item_name = %s AND available = TRUE
                 """
-                cls.cursor.execute(query, (item_name,))
-                details = cls.cursor.fetchone()
+                cls.db.cursor.execute(query, (item_name,))
+                details = cls.db.cursor.fetchone()
                 if details:
                     item_id, category, price = details
                     items.append(
@@ -76,11 +66,7 @@ class RestaurantChoices:
             INSERT INTO orders (customer_id, waiter_id, items)
             VALUES (%s, %s, %s)
             """
-            cls.cursor.execute(query, (cu_choice, wa_choice, items_json))
-
-            # Commit the transaction
-            cls.conn.commit()
-
+            cls.db.cursor.execute(query, (cu_choice, wa_choice, items_json))
             print(f"Order of {item_names} has been created successfully!")
             break
         menu.restaurant()
@@ -95,9 +81,8 @@ class RestaurantChoices:
         FROM orders
         WHERE order_id = '{order_id_input}'
         """
-        cls.cursor.execute(inspect_query)
-        order_data = cls.cursor.fetchone()
-        cls.conn.commit()
+        cls.db.cursor.execute(inspect_query)
+        order_data = cls.db.cursor.fetchone()
 
         if not order_data:
             print("Order not found")
@@ -117,8 +102,8 @@ class RestaurantChoices:
         FROM menu
         WHERE item_name = '{new_item}'
         """
-        cls.cursor.execute(new_item_query)
-        new_item_details = cls.cursor.fetchone()
+        cls.db.cursor.execute(new_item_query)
+        new_item_details = cls.db.cursor.fetchone()
 
         if not new_item_details:
             print("New item not found in the menu")
@@ -139,8 +124,7 @@ class RestaurantChoices:
         )
         WHERE order_id = '{order_id_input}'
         """
-        cls.cursor.execute(query2)
-        cls.conn.commit()
+        cls.db.cursor.execute(query2)
         print(f"We have changed {change_item} to {new_item}")
         menu.restaurant()
 
@@ -153,7 +137,7 @@ class RestaurantChoices:
         SET cancelled = TRUE
         WHERE order_id = '{order_id_input}'
         """
-        cls.cursor.execute(query)
+        cls.db.cursor.execute(query)
         print(f"The food for Order ID '{order_id_input}' has been cancelled")
         menu.restaurant()
 
@@ -166,8 +150,8 @@ class RestaurantChoices:
         FROM orders
         WHERE order_id = %s
         """
-        cls.cursor.execute(query3, (order_id_input,))
-        result = cls.cursor.fetchone()
+        cls.db.cursor.execute(query3, (order_id_input,))
+        result = cls.db.cursor.fetchone()
 
         if result:
             order_complete = bool(result[0])
@@ -180,8 +164,8 @@ class RestaurantChoices:
         FROM orders
         WHERE order_id = %s
         """
-        cls.cursor.execute(query2, (order_id_input,))
-        result = cls.cursor.fetchone()
+        cls.db.cursor.execute(query2, (order_id_input,))
+        result = cls.db.cursor.fetchone()
 
         if result:
             total_price = float(result[0])
@@ -207,7 +191,7 @@ class RestaurantChoices:
                     SET payment_method_id = %s
                     WHERE order_id = %s
                     """
-                    cls.cursor.execute(
+                    cls.db.cursor.execute(
                         query_p,
                         (
                             pm_input,
@@ -220,7 +204,7 @@ class RestaurantChoices:
                     SET amount_paid = %s
                     WHERE order_id = %s
                     """
-                    cls.cursor.execute(
+                    cls.db.cursor.execute(
                         query_a,
                         (
                             am_input,
@@ -233,7 +217,7 @@ class RestaurantChoices:
                     SET order_complete = TRUE
                     WHERE order_id = %s
                     """
-                    cls.cursor.execute(query, (order_id_input,))
+                    cls.db.cursor.execute(query, (order_id_input,))
                     print(
                         f"Order Total was £{total_price}. You have paid the amount of £{am_input} for your order successfully. The order is now closed, thank you!"
                     )
@@ -241,8 +225,7 @@ class RestaurantChoices:
                     print(
                         f"Order Total: £{total_price}. You still owe {total_price - amount_paid}"
                     )
-                cls.conn.commit()
                 menu.restaurant()
 
     def close_connection(cls):
-        cls.conn.close()
+        cls.db.close_connection()

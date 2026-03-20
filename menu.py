@@ -2,7 +2,11 @@ import sys
 
 
 def main():
-    menu()
+    try:
+        menu()
+    except KeyboardInterrupt:
+        print("\nProgram ended. Exiting now...")
+        sys.exit(0)
 
 
 def menu():
@@ -28,6 +32,7 @@ def menu():
     elif choice == "w":
         waitlist()
     elif choice == "q":
+        print("Restaurant Management shutting down, goodbye!")
         sys.exit()
     else:
         print("You must only select either A, B, M or Q")
@@ -65,6 +70,7 @@ def restaurant():
     elif choice == "r":
         menu()
     elif choice == "q":
+        print("Restaurant Management shutting down, goodbye!")
         sys.exit()
     else:
         print("You must only select either A, B, C, D or Q")
@@ -78,10 +84,11 @@ def kitchen():
 
     choice = input(
         """
-    A: Prepare Food
-    B: Food Availability
-    C: Mark as Ready
-    D: Mark as Delivered
+    A: Show Orders 
+    B: Prepare Food
+    C: Food Availability
+    D: Mark as Ready
+    E: Mark as Delivered
     R: Return
     Q: Quit
 
@@ -89,16 +96,19 @@ def kitchen():
     ).lower()
 
     if choice == "a":
-        KitchenChoices.update_pf()
+        KitchenChoices.show_orders()
     elif choice == "b":
-        KitchenChoices.update_fu()
+        KitchenChoices.update_pf()
     elif choice == "c":
-        KitchenChoices.update_re()
+        KitchenChoices.update_fu()
     elif choice == "d":
+        KitchenChoices.update_re()
+    elif choice == "e":
         KitchenChoices.update_de()
     elif choice == "r":
         menu()
     elif choice == "q":
+        print("Restaurant Management shutting down, goodbye!")
         sys.exit()
     else:
         print("You must only select either A, B, C, D or Q")
@@ -133,6 +143,7 @@ def manager():
     elif choice == "r":
         menu()
     elif choice == "q":
+        print("Restaurant Management shutting down, goodbye!")
         sys.exit()
     else:
         print("You must only select either A, B, C, D or Q")
@@ -165,11 +176,12 @@ def waitlist():
     elif choice == "r":
         menu()
     elif choice == "q":
+        print("Restaurant Management shutting down, goodbye!")
         sys.exit()
     else:
         print("You must only select either A, B, C or Q")
         print("Please try again")
-        waitlist()()
+        waitlist()
 
 
 if __name__ == "__main__":

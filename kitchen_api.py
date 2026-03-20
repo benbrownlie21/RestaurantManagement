@@ -1,18 +1,44 @@
-import psycopg2
+from tabulate import tabulate
 import menu
+from db import Database
 
 
 class KitchenChoices:
-    conn = psycopg2.connect(
-        database="RestaurantManagement",
-        user="postgres",
-        password="New2020Road!",
-        host="localhost",
-        port="5433",
-    )
+    db = Database()
 
-    conn.autocommit = True
-    cursor = conn.cursor()
+    @classmethod
+    def show_orders(cls):
+        query = """
+        SELECT 
+            order_id,
+            customer_id,
+            waiter_id,
+            STRING_AGG(CASE WHEN order_data->>'category' = 'Starters' THEN order_data->>'item_name' ELSE NULL END, ', ') AS Starters,
+            STRING_AGG(CASE WHEN order_data->>'category' = 'Mains' THEN order_data->>'item_name' ELSE NULL END, ', ') AS Mains,
+            STRING_AGG(CASE WHEN order_data->>'category' = 'Sides' THEN order_data->>'item_name' ELSE NULL END, ', ') AS Sides,
+            STRING_AGG(CASE WHEN order_data->>'category' = 'Drinks' THEN order_data->>'item_name' ELSE NULL END, ', ') AS Drinks,
+            STRING_AGG(CASE WHEN order_data->>'category' = 'Desserts' THEN order_data->>'item_name' ELSE NULL END, ', ') AS Desserts,
+            CASE WHEN order_ready = TRUE THEN 'Ready for Delivery' ELSE 'Not Ready for Delivery' END AS Action
+        FROM 
+            orders,
+            jsonb_array_elements(items::jsonb) AS order_data
+        WHERE
+            cancelled <> TRUE
+        AND
+            order_complete <> TRUE
+        AND
+            order_delivered <> TRUE
+        GROUP BY 
+            order_id, customer_id, waiter_id
+        ORDER BY
+            modified DESC    
+        """
+        cls.db.cursor.execute(query)
+        results = cls.db.cursor.fetchall()
+        if results:
+            headers = [desc[0].upper() for desc in cls.db.cursor.description]
+            print(tabulate(results, headers=headers, tablefmt="fancy_grid", stralign="center"))
+        menu.kitchen()
 
     @classmethod
     def update_pf(cls):
@@ -23,10 +49,9 @@ class KitchenChoices:
         SET prepare_order = TRUE
         WHERE order_id = '{order_id_input}'
         """
-        cls.cursor.execute(query)
-        cls.conn.commit()
+        cls.db.cursor.execute(query)
         print(f"The food for Order ID '{order_id_input}' is being prepared")
-        menu.restaurant()
+        menu.kitchen()
 
     @classmethod
     def update_fu(cls):
@@ -39,8 +64,8 @@ class KitchenChoices:
             FROM menu
             WHERE item_id = %s
             """
-            cls.cursor.execute(query2, (item_id_input,))
-            result = cls.cursor.fetchone()
+            cls.db.cursor.execute(query2, (item_id_input,))
+            result = cls.db.cursor.fetchone()
 
             if result:
                 item_name = result[0]
@@ -51,8 +76,7 @@ class KitchenChoices:
             WHERE item_id = %s
             """
 
-            cls.cursor.execute(query, (item_id_input,))
-            cls.conn.commit()
+            cls.db.cursor.execute(query, (item_id_input,))
             print(
                 f"The food item '{item_name}' is not available and has been removed from the menu\n"
             )
@@ -64,8 +88,8 @@ class KitchenChoices:
             FROM menu
             WHERE item_id = %s
             """
-            cls.cursor.execute(query2, (item_id_input,))
-            result = cls.cursor.fetchone()
+            cls.db.cursor.execute(query2, (item_id_input,))
+            result = cls.db.cursor.fetchone()
 
             if result:
                 item_name = result[0]
@@ -76,12 +100,11 @@ class KitchenChoices:
             WHERE item_id = %s
             """
 
-            cls.cursor.execute(query, (item_id_input,))
-            cls.conn.commit()
+            cls.db.cursor.execute(query, (item_id_input,))
             print(
                 f"The food item '{item_name}' is now available and has been added to the menu\n"
             )
-            menu.restaurant()
+            menu.kitchen()
 
     @classmethod
     def update_re(cls):
@@ -92,10 +115,9 @@ class KitchenChoices:
         SET order_ready = TRUE
         WHERE order_id = '{order_id_input}'
         """
-        cls.cursor.execute(query)
-        cls.conn.commit()
+        cls.db.cursor.execute(query)
         print(f"The food for Order ID '{order_id_input}' is ready for the customer")
-        menu.restaurant()
+        menu.kitchen()
 
     @classmethod
     def update_de(cls):
@@ -106,12 +128,12 @@ class KitchenChoices:
         SET order_delivered = TRUE
         WHERE order_id = '{order_id_input}'
         """
-        cls.cursor.execute(query)
-        cls.conn.commit()
+        cls.db.cursor.execute(query)
         print(
             f"The food for Order ID '{order_id_input}' has been delivered successfully"
         )
-        menu.restaurant()
+        menu.kitchen()
 
+    @classmethod
     def close_connection(cls):
-        cls.conn.close()
+        cls.db.close_connection()

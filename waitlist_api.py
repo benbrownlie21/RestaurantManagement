@@ -1,31 +1,22 @@
-import psycopg2
 from tabulate import tabulate
 import menu
-
+from db import Database
 
 class WaitListChoices:
-    conn = psycopg2.connect(
-        database="RestaurantManagement",
-        user="postgres",
-        password="New2020Road!",
-        host="localhost",
-        port="5433",
-    )
-
-    conn.autocommit = True
-    cursor = conn.cursor()
+    db = Database()
 
     @classmethod
     def show_list(cls):
         query = """
-        SELECT waitlist_id AS Waitlist_ID, CONCAT(first_name, ' ', last_name) AS Name, email AS Email, phone_number AS Phone_Number
-        FROM Waitlist 
+        SELECT waitlist_id AS Waitlist_ID, CONCAT(first_name, ' ', last_name) AS Name, email AS Email, phone_number AS Number
+        FROM Waitlist
+        WHERE seated = false
         ORDER BY modified DESC
         """
-        cls.cursor.execute(query)
-        results = cls.cursor.fetchall()
+
+        results = cls.db.execute_all(query)
         if results:
-            headers = [desc[0].upper() for desc in cls.cursor.description]
+            headers = [desc[0].upper() for desc in cls.db.cursor.description]
             print(tabulate(results, headers=headers, tablefmt="fancy_grid"))
         menu.waitlist()
 
@@ -39,17 +30,8 @@ class WaitListChoices:
         INSERT INTO Waitlist (first_name, last_name, email, phone_number)
         VALUES (%s, %s, %s, %s);
         """
-        cls.cursor.execute(
-            query,
-            (
-                fn_choice,
-                ln_choice,
-                em_choice,
-                pn_choice,
-            ),
-        )
-        cls.conn.commit()
-        print(f"You have been successfully added to the waitlist!")
+        cls.db.execute_update(query, (fn_choice, ln_choice, em_choice, pn_choice))
+        print("You have been successfully added to the waitlist!")
         menu.waitlist()
 
     @classmethod
@@ -58,26 +40,19 @@ class WaitListChoices:
         query_update = f"""
         UPDATE Waitlist
         SET seated = TRUE
-        WHERE waitlist_id = '{wl_id}'
+        WHERE waitlist_id = %s
         """
-        cls.cursor.execute(query_update, (wl_id,))
+        cls.db.cursor.execute(query_update, (wl_id,))
+        print("You have now been seated")
+        menu.waitlist()
 
         query_insert = f"""
         INSERT INTO Customers (first_name, last_name, email, phone_number)
         SELECT first_name, last_name, email, phone_number
         FROM waitlist
-        WHERE waitlist_id = '{wl_id}'
+        WHERE waitlist_id = %s
         """
-        cls.cursor.execute(query_insert, (wl_id,))
-
-        query_delete = f"""
-        DELETE FROM Waitlist
-        WHERE waitlist_id = '{wl_id}'
-        """
-        cls.cursor.execute(query_delete, (wl_id,))
-        cls.conn.commit()
-        print("The customer has been seated")
-        menu.waitlist()
+        cls.db.cursor.execute(query_insert, (wl_id,))
 
     def close_connection(cls):
-        cls.conn.close()
+        cls.db.close_connection()
