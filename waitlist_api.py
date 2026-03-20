@@ -2,6 +2,7 @@ from tabulate import tabulate
 import menu
 from db import Database
 
+
 class WaitListChoices:
     db = Database()
 
@@ -11,7 +12,8 @@ class WaitListChoices:
         SELECT waitlist_id AS Waitlist_ID, CONCAT(first_name, ' ', last_name) AS Name, email AS Email, phone_number AS Number
         FROM Waitlist
         WHERE seated = false
-        ORDER BY modified DESC
+        ORDER BY created ASC
+        LIMIT 1000;
         """
 
         results = cls.db.execute_all(query)

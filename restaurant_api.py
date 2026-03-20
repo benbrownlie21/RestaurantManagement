@@ -3,6 +3,7 @@ import json
 import menu
 from db import Database
 
+
 class RestaurantChoices:
     db = Database()
 
@@ -143,7 +144,6 @@ class RestaurantChoices:
 
     @classmethod
     def complete(cls):
-        # updates order_complete column in orders table from FALSE to TRUE and adds the amount paid to the db
         order_id_input = input("Enter Order ID: ")
         query3 = """
         SELECT order_complete
@@ -155,9 +155,10 @@ class RestaurantChoices:
 
         if result:
             order_complete = bool(result[0])
-        if order_complete:
-            print(f"Order number '{order_id_input}' has already been paid for")
-            menu.restaurant()
+            if order_complete:
+                print(f"Order number '{order_id_input}' has already been paid for")
+                menu.restaurant()
+                return  # also add return here to stop execution after redirecting
 
         query2 = """
         SELECT total_price
@@ -171,61 +172,56 @@ class RestaurantChoices:
             total_price = float(result[0])
             print(f"Your total is: £{total_price}")
 
+        # 1. Separate the payment method loop — don't return, just break once valid
+        pm_input = None
         while True:
-            pm_input = input("Enter Payment Method (1-4): ")
+            pm_input = input(
+                "Enter Payment Method (1: Cash, 2: Amex, 3: Visa, 4: Mastercard): "
+            )
             if pm_input.isdigit() and 1 <= int(pm_input) <= 4:
-                return int(pm_input)
+                pm_input = int(pm_input)
+                break  # <-- break instead of return
             else:
-                print("PLease enter a number between 1 and 4")
-                pm_input
+                print("Please enter a number between 1 and 4")
 
-            amount_paid = 0.0
+        # 2. Now handle payment amount — this was previously unreachable
+        amount_paid = 0.0
+        while amount_paid < total_price:
+            am_input = float(input("How much would you like to pay?: "))
+            amount_paid += am_input
 
-            while amount_paid < total_price:
-                am_input = float(input("How much would you like to pay?: "))
-                amount_paid += am_input
+            if amount_paid >= total_price:
+                query_p = """
+                UPDATE Orders
+                SET payment_method_id = %s
+                WHERE order_id = %s
+                """
+                cls.db.cursor.execute(query_p, (pm_input, order_id_input))
 
-                if amount_paid >= total_price:
-                    query_p = """
-                    UPDATE Orders
-                    SET payment_method_id = %s
-                    WHERE order_id = %s
-                    """
-                    cls.db.cursor.execute(
-                        query_p,
-                        (
-                            pm_input,
-                            order_id_input,
-                        ),
-                    )
+                query_a = """
+                UPDATE Orders
+                SET amount_paid = %s
+                WHERE order_id = %s
+                """
+                cls.db.cursor.execute(
+                    query_a, (amount_paid, order_id_input)
+                )  # fixed: was am_input, should be amount_paid
 
-                    query_a = """
-                    UPDATE Orders
-                    SET amount_paid = %s
-                    WHERE order_id = %s
-                    """
-                    cls.db.cursor.execute(
-                        query_a,
-                        (
-                            am_input,
-                            order_id_input,
-                        ),
-                    )
+                query = """
+                UPDATE Orders
+                SET order_complete = TRUE
+                WHERE order_id = %s
+                """
+                cls.db.cursor.execute(query, (order_id_input,))
+                print(
+                    f"Order Total was £{total_price}. You have paid £{amount_paid} successfully. The order is now closed, thank you!"
+                )
+            else:
+                print(
+                    f"Order Total: £{total_price}. You still owe £{total_price - amount_paid:.2f}"
+                )
 
-                    query = """
-                    UPDATE Orders
-                    SET order_complete = TRUE
-                    WHERE order_id = %s
-                    """
-                    cls.db.cursor.execute(query, (order_id_input,))
-                    print(
-                        f"Order Total was £{total_price}. You have paid the amount of £{am_input} for your order successfully. The order is now closed, thank you!"
-                    )
-                else:
-                    print(
-                        f"Order Total: £{total_price}. You still owe {total_price - amount_paid}"
-                    )
-                menu.restaurant()
+        menu.restaurant()
 
     def close_connection(cls):
         cls.db.close_connection()
