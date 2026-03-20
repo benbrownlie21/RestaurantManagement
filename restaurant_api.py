@@ -131,14 +131,35 @@ class RestaurantChoices:
 
     @classmethod
     def cancelled(cls):
-        # updates the db table orders changing cancelled from NULL to current_datetime
         order_id_input = input("Enter Order ID: ")
-        query = f"""
+        query_o = """
+        SELECT order_delivered
+        FROM orders
+        WHERE order_id = %s
+        """
+        cls.db.cursor.execute(query_o, (order_id_input,))
+        result = cls.db.cursor.fetchone()
+
+        if not result:
+            print(f"Order ID '{order_id_input}' not found.")
+            menu.restaurant()
+            return
+
+        order_delivered = bool(result[0])
+
+        if order_delivered:
+            print(
+                f"Order number '{order_id_input}' has been delivered and cannot be cancelled"
+            )
+            menu.restaurant()
+            return
+
+        query = """
         UPDATE Orders
         SET cancelled = TRUE
-        WHERE order_id = '{order_id_input}'
+        WHERE order_id = %s
         """
-        cls.db.cursor.execute(query)
+        cls.db.cursor.execute(query, (order_id_input,))
         print(f"The food for Order ID '{order_id_input}' has been cancelled")
         menu.restaurant()
 
@@ -158,7 +179,7 @@ class RestaurantChoices:
             if order_complete:
                 print(f"Order number '{order_id_input}' has already been paid for")
                 menu.restaurant()
-                return  # also add return here to stop execution after redirecting
+                return
 
         query2 = """
         SELECT total_price
@@ -172,7 +193,6 @@ class RestaurantChoices:
             total_price = float(result[0])
             print(f"Your total is: £{total_price}")
 
-        # 1. Separate the payment method loop — don't return, just break once valid
         pm_input = None
         while True:
             pm_input = input(
@@ -180,11 +200,10 @@ class RestaurantChoices:
             )
             if pm_input.isdigit() and 1 <= int(pm_input) <= 4:
                 pm_input = int(pm_input)
-                break  # <-- break instead of return
+                break
             else:
                 print("Please enter a number between 1 and 4")
 
-        # 2. Now handle payment amount — this was previously unreachable
         amount_paid = 0.0
         while amount_paid < total_price:
             am_input = float(input("How much would you like to pay?: "))
@@ -203,9 +222,7 @@ class RestaurantChoices:
                 SET amount_paid = %s
                 WHERE order_id = %s
                 """
-                cls.db.cursor.execute(
-                    query_a, (amount_paid, order_id_input)
-                )  # fixed: was am_input, should be amount_paid
+                cls.db.cursor.execute(query_a, (amount_paid, order_id_input))
 
                 query = """
                 UPDATE Orders
